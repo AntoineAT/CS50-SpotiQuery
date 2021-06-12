@@ -15,6 +15,7 @@ Finally, I could add some more features to this web app in the future if anyone 
 
 ##### Understanding:
 `**helpers.py**`
+
 Atop of the file are some imports, among them are `spotipy` library, which someone wrote to handle with Spotify API. So, I just use that (it is published on pypi.org).
 
 Next you will encounter `client_credentials_manager` which is used to set up my web app that Spotify request me to do.
@@ -29,6 +30,7 @@ Next, `top_10_tracks` almost the same thing as `all_albums`, except it returns "
 At the bottom, `commafy` is just a "filter", which is use to format the "followers" values which you will see when you use the web app.
 
 `**app.py**`
+
 This is the main file of my web app. Atop of the file are some basic imports and configuring Flask.
 
 Right below you can see a `COUNTRY_CODES` list with a bunch of 2-letters country codes which is later used to check for validation of country codes when the user enter in the form of the web app.
@@ -37,9 +39,11 @@ Right below you can see a `COUNTRY_CODES` list with a bunch of 2-letters country
 The logic in both `'/albums'` and `'/toptracks'` are quite simple, all the `if` block in both routes are to check validation for the user input. The whole bunch of assignments below are just to simplify and take all information that I wrote in `helpers.py` and then pass all of them to `render_template` to show on the web.
 
 `**static/**`
+
 Inside of this folder is `style.css` which is used for aesthetic of the website.
 
 `**templates/**`
+
 All the html file are put in this folder.
 
 That's all, thank you for your time and your attention!
