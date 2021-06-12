@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    SpotiQuery: Artist
+{% endblock %}
+
+{% block main %}
+    <div style="margin-bottom: 2rem;">
+        <img alt="{{ name }}" class="border" src="{{ img }}" title="{{ name }}">
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Artist Name</th>
+                <th>Followers on Spotify</th>
+                <th>Popularity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a title="Open in Spotify" href="{{ artist_url }}">{{ name }}</a></td>
+                <td>{{ followers }}</td>
+                <td>{{ popularity }}/100</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="show">All Albums</p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Album Cover</th>
+                <th>Title</th>
+                <th>Total tracks</th>
+                <th>Release Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for album in albums %}
+                <tr>
+                    <td>{{ albums.index(album) + 1 }}</td>
+                    <td>
+                        <img alt="{{ album['name'] }}" src="{{ album['images'][2]['url'] }}" title="{{ album['name'] }}">
+                    </td>
+                    <td><a title="Open in Spotify" href="{{ album['external_urls']['spotify'] }}">{{ album["name"] }}</a></td>
+                    <td>{{ album["total_tracks"] }}</td>
+                    <td>{{ album["release_date"] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

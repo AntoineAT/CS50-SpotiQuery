@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    SpotiQuery: Artist
+{% endblock %}
+
+{% block main %}
+    <p>
+        Search for an artist and artist's all albums
+    </p>
+    <form action="/albums" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="artist" placeholder="Artist" type="text">
+        </div>
+        <button class="btn btn-info" type="submit">Search</button>
+    </form>
+{% endblock %}

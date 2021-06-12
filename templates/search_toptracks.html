@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    SpotiQuery: Top Tracks
+{% endblock %}
+
+{% block main %}
+    <p>
+        Search for an artist and artist's top 10 tracks
+    </p>
+    <form action="/toptracks" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="artist" placeholder="Artist" type="text">
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="country" placeholder="Two letter country codes" type="text">
+        </div>
+        <p><a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">Read ISO 3166-1 alpha-2 country code</a></p>
+        <button class="btn btn-info" type="submit">Search</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    SpotiQuery: Top Tracks
+{% endblock %}
+
+{% block main %}
+    <div style="margin-bottom: 2rem;">
+        <img alt="{{ name }}" class="border" src="{{ img }}" title="{{ name }}">
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Artist Name</th>
+                <th>Followers on Spotify</th>
+                <th>Popularity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a title="Open in Spotify" href="{{ artist_url }}">{{ name }}</a></td>
+                <td>{{ followers }}</td>
+                <td>{{ popularity }}/100</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="show">Top 10 Tracks</p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Album Cover</th>
+                <th>Track Title</th>
+                <th>Popularity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for track in tracks %}
+                <tr>
+                    <td>{{ tracks.index(track) + 1 }}</td>
+                    <td>
+                        <img alt="{{ track['name'] }}" src="{{ track['album']['images'][2]['url'] }}" title="{{ track['name'] }}">
+                    </td>
+                    <td><a title="Open in Spotify" href="{{ track['external_urls']['spotify'] }}">{{ track["name"] }}</a></td>
+                    <td>{{ track["popularity"] }}/100</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
